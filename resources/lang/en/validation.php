@@ -130,8 +130,33 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'identification' => [
+            'required' => 'La identificación es requerido',
+            'numeric'=>'La identificación tiene que ser numeros',
+            'max'=>'La identificación debe tener minimo 10 números'
+        ],
+        'first_name' => [
+            'required' => 'El primer nombre es requerido',
+            'string'=>'El primer nombre tiene que ser un texto',
+            'max:200'=>'El primer nombre es demasiado largo'
+        ],
+        'lastname' => [
+            'required' => 'El apellido es requerido',
+            'string'=>'El primer nombre tiene que ser un texto',
+            'max:200'=>'El apellido es demasiado largo'
+        ],
+        'address' => [
+            'required' => 'La dirección es requerido',
+            'string'=>'La dirección tiene que ser un texto',
+            'max:200'=>'La dirección es demasiado largo'
+        ],
+        'phone' => [
+            'required' => 'El teléfono es requerido',
+            'numeric'=>'El teléfono tiene que ser numeros',
+            'max'=>'El teléfono debe tener minimo 10 números'
+        ],
+        'type_person' => [
+            'required' => 'El Tipo de persona es requerido',
         ],
     ],
 

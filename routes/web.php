@@ -14,5 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('information.information');
 });
+Route::get('/personForm', 'personController@personForm');
+Route::post('/savePerson', 'personController@savePerson')->name('savePerson');
