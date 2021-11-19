@@ -1,8 +1,8 @@
 @extends('layouts.base')
-
+@section('contenido')
 <div class="container mt-5">
-    <div class="row justify-content-center">
-        <div class="col-md-7 mt-5">
+    <div class="row d-flex justify-content-lg-between">
+        <div class="col-md-6 mt-5">
             <!-- Mensaje flash -->
             @if(session('PersonaGuardado'))
             <div class="alert alert-success">
@@ -23,7 +23,7 @@
             </div>
             @endif
             <div class="card ">
-                <form action="/savePerson" method="post">
+                <form action="savePerson" method="post">
                     <div class=" card-header text-center">
                         <h2>Agregar propietario/conductor</h2>
                     </div>
@@ -100,6 +100,55 @@
                 </form>
             </div>
         </div>
+        <div class="col-md-6">
+            <h2 class="text-center mb-5">Listado</h2>
+            <table class="table table-bordered table-striped text-center">
+                <thead>
+                    <th>
+                        Identificación
+                    </th>
+                    <th>
+                        Nombre
+                    </th>
+                    <th>
+                        Dirección
+                    </th>
+                    <th>
+                        Telefono
+                    </th>
+                    <th>
+                        Propietario/Conductor
+                    </th>
+                    <th>
+                        Cuidad
+                    </th>
+                </thead>
+                <tbody>
+                    @foreach($data as $key => $value)
+                    <tr>
+                        <td>
+                            {{ $value->identification }}
+                        </td>
+                        <td>
+                            {{ $value->first_name .' '.$value->second_name . ' '.$value->lastname  }}
+                        </td>
+                        <td>
+                            {{ $value->address }}
+                        </td>
+                        <td>
+                            {{ $value->phone }}
+                        </td>
+                        <td>
+                            {{ $value->type_person }}
+                        </td>
+                        <td>
+                            {{ $value->name  }}
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
     </div>
-
 </div>
+@endsection

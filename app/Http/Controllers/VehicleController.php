@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Vehicle;
 
 class VehicleController extends Controller
 {
@@ -13,7 +14,9 @@ class VehicleController extends Controller
      */
     public function index()
     {
-        return view('vehicles.vehicle');
+        $data['vehicle']=Vehicle::all();
+        return view('vehicles.vehicle',$data);
+        // return view('persons.person',compact("country","department","city","data"));
     }
 
     /**
@@ -34,7 +37,14 @@ class VehicleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator =$this->validate($request,[
+            'plaque'=>'required|unique:vehicle',
+            'mark'=>'required|string|max:200',
+        ]);
+        $data = request()->except('_token');
+        Vehicle::insert($data);
+        return back()->with('VehiculoGuardado','Vehiculo guardado correctamente');
+
     }
 
     /**
